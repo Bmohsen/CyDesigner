@@ -41,7 +41,6 @@ target_link_libraries(rlImGui PUBLIC raylib imgui)
 # =========================================================
 # 4. CEF DLL WRAPPER (Updated for 'base' folder)
 # =========================================================
-# This glob now explicitly includes the 'base' folder where your logging live
 file(GLOB_RECURSE CEF_WRAPPER_SOURCES
     "${CEF_ROOT}/libcef_dll/cpptoc/*.cc"
     "${CEF_ROOT}/libcef_dll/ctocpp/*.cc"
