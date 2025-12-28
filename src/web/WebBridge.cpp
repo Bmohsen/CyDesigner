@@ -3,7 +3,6 @@
 #include <include/cef_browser.h>
 
 namespace Web {
-    // This struct is only visible in this .cpp file!
     struct WebBridge::Impl {
         CefRefPtr<CefBrowser> browser;
         CefRefPtr<WebHandler> handler;
@@ -24,13 +23,10 @@ namespace Web {
         CefWindowInfo window_info;
         window_info.SetAsWindowless(reinterpret_cast<cef_window_handle_t>(windowHandle));
         window_info.shared_texture_enabled = false;
-
         CefBrowserSettings settings;
         pImpl->handler = new WebHandler();
         pImpl->handler->width = width;
         pImpl->handler->height = height;
-
-        // Sync creation
         pImpl->browser = CefBrowserHost::CreateBrowserSync(
             window_info, pImpl->handler.get(), "https://google.com", settings, nullptr, nullptr);
     }
@@ -45,10 +41,7 @@ namespace Web {
     }
 
     bool WebBridge::GetPixels(std::vector<unsigned char>& outBuffer) {
-        // Access the handler through the pImpl pointer instead of handlerInternal
         if (pImpl->handler && pImpl->handler->needsUpdate) {
-
-            // Safety: Ensure we don't copy if the buffer size is 0 or mismatched
             size_t expectedSize = pImpl->handler->width * pImpl->handler->height * 4;
 
             if (pImpl->handler->pixelBuffer.size() == expectedSize) {

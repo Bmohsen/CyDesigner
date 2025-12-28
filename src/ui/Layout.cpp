@@ -105,18 +105,16 @@ namespace UI {
 		ImGui::Dummy(ImVec2(0, 10)); // Spacer
 
 		auto RenderMenuItem = [](const char* icon, const char* label) {
-			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0, 0, 0, 0)); // Transparent background
+			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0, 0, 0, 0));
 
-			// Icon (Always visible)
+		
 			if (ImGui::Button(icon, ImVec2(40, 40))) {
-				// Handle click 
+		
 			}
-
-			// Text (Only visible if expanding)
 			// We clip the text based on current width so it doesn't spill out
 			if (currentWidth > 100.0f) {
 				ImGui::SameLine();
-				ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 10); // Center text vertically
+				ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 10);
 				ImGui::Text("%s", label);
 			}
 
@@ -137,12 +135,8 @@ namespace UI {
 
 	// render properties panel
 	void RenderProperties(ImVec2 pos, ImVec2 size) {
-		// 1. Setup Position and Size
 		ImGui::SetNextWindowPos(pos, ImGuiCond_Always);
 		ImGui::SetNextWindowSize(size, ImGuiCond_Always);
-
-		// 2. Styling: Transparency and Borders
-		// The '0.85f' alpha gives that "frosted" or semi-transparent look
 		ImGui::PushStyleColor(ImGuiCol_WindowBg, ImVec4(0.16f, 0.16f, 0.16f, 0.85f));
 		ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0.30f, 0.30f, 0.35f, 0.50f));
 		ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 8.0f);   
@@ -153,7 +147,6 @@ namespace UI {
 			ImGuiWindowFlags_NoSavedSettings;
 
 		if (ImGui::Begin("Properties", nullptr, flags)) {
-			// Title within the panel for a cleaner look
 			ImGui::TextColored(ImVec4(0.4f, 0.7f, 1.0f, 1.0f), "ELEMENT PROPERTIES");
 			ImGui::Separator();
 			ImGui::Spacing();
@@ -209,10 +202,7 @@ namespace UI {
 		ImGui::PushStyleColor(ImGuiCol_WindowBg, ImVec4(0, 0, 0, 0));
 
 		ImGui::Begin("Viewport", nullptr, flags);
-
-		// Get the internal ImGui cursor position where the texture should start
 		ImVec2 p = ImGui::GetCursorScreenPos();
-
 		EndMode2D();
 		DrawTexture(webTexture, (int)p.x, (int)p.y, WHITE);
 		if(ImGui::IsWindowHovered()){
