@@ -1,0 +1,42 @@
+# --- IDE and System ---
+.vs/
+.vscode/
+*.user
+*.suo
+*.sln
+*.vcxproj
+*.filters
+*.db
+*.opendb
+Debug/
+Release/
+x64/
+x86/
+[Dd]ebug/
+[Rr]elease/
+
+out/
+build/
+bin/
+obj/
+
+vcpkg_installed/
+external/vcpkg/buildtrees/
+external/vcpkg/packages/
+external/vcpkg/downloads/
+external/vcpkg/installed/
+external/*
+
+# --- CMake ---
+CMakeCache.txt
+CMakeFiles/
+CMakeSettings.json
+CMakeUserPresets.json
+cmake_install.cmake
+install/
+
+# --- OS Specific ---
+Thumbs.db
+.DS_Store
+
+*.log
